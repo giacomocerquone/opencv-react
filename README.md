@@ -4,7 +4,8 @@
 
 Hooks-first minimal OpenCV wrapper for React.<br/>
 It simplifies the import of this library and integrates it well with the React ecosystem.<br />
-**Bear in mind** that the loading of the library, being huge, is done asynchronously. Of course you can
+**Bear in mind** that the loading of the library, being huge, is done asynchronously. Of course you can listen with this lib when the loading has finished in order to execute some setup code.<br />
+You have also access to a loading state which is provided by the `OpenCvProvider` component
 
 ## API
 
