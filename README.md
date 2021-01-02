@@ -74,7 +74,7 @@ const App = () => {
 }
 ```
 
-> _Check also the example folder_
+_*Check also the example folder*_
 
 ## Todo
 
