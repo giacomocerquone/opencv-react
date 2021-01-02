@@ -23,7 +23,7 @@ export const OpenCvProvider = ({ openCvPath, children, onLoad }) => {
   }, [])
 
   React.useEffect(() => {
-    if (document.getElementById(scriptId)) {
+    if (document.getElementById(scriptId) || window.cv) {
       return
     }
 
