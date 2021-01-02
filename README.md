@@ -1,12 +1,26 @@
 # opencv-react
 
-## Hooks-first minimal OpenCV wrapper for React.
+> Hooks-first minimal OpenCV wrapper for React.
+
+[![NPM](https://img.shields.io/npm/v/opencv-react.svg)](https://www.npmjs.com/package/opencv-react) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 <div id="description" />
 
 It simplifies the import of this library and integrates it well with the React ecosystem.<br />
 **Bear in mind** that the loading of the library, being huge, is done asynchronously. Of course you can listen with this lib when the loading has finished in order to execute some setup code.<br />
 You have also access to a loading state which is provided by the `OpenCvProvider` component
+
+## Install
+
+```bash
+npm i react-doc-scan
+```
+
+or
+
+```bash
+yarn add react-doc-scan
+```
 
 ## API
 
@@ -85,3 +99,7 @@ _*Check also the example folder*_
 ## Projects that uses this lib
 
 WIP
+
+## License
+
+MIT © [giacomocerquone](https://github.com/giacomocerquone)
