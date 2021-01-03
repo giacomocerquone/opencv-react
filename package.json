@@ -1,6 +1,6 @@
 {
   "name": "opencv-react",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "OpenCV react wrapper. Hooks first API.",
   "author": "giacomocerquone",
   "license": "MIT",
