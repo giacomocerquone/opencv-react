@@ -13,21 +13,20 @@ const moduleConfig = {
 }
 
 export const OpenCvProvider = ({ openCvPath, children, onLoad }) => {
-  const [loading, setLoading] = React.useState(false)
+  const [loaded, setLoaded] = React.useState(false)
 
   const handleOnLoad = React.useCallback(() => {
     if (onLoad) {
       onLoad(window.cv)
     }
-    setLoading(false)
+    setLoaded(true)
   }, [])
 
   React.useEffect(() => {
     if (document.getElementById(scriptId) || window.cv) {
+      setLoaded(true)
       return
     }
-
-    setLoading(true)
 
     // https://docs.opencv.org/3.4/dc/de6/tutorial_js_nodejs.html
     // https://medium.com/code-divoire/integrating-opencv-js-with-an-angular-application-20ae11c7e217
@@ -51,8 +50,8 @@ export const OpenCvProvider = ({ openCvPath, children, onLoad }) => {
   }, [openCvPath, handleOnLoad])
 
   const memoizedProviderValue = React.useMemo(
-    () => ({ loading, cv: window.cv }),
-    [loading]
+    () => ({ loaded, cv: window.cv }),
+    [loaded]
   )
 
   return <Provider value={memoizedProviderValue}>{children}</Provider>

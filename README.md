@@ -8,7 +8,7 @@
 
 It simplifies the import of this library and integrates it well with the React ecosystem.<br />
 **Bear in mind** that the loading of the library, being huge, is done asynchronously. Of course you can listen with this lib when the loading has finished in order to execute some setup code.<br />
-You have also access to a loading state which is provided by the `OpenCvProvider` component
+You have also access to a `loaded` state which is provided by the `OpenCvProvider` component
 
 ## Install
 
@@ -49,14 +49,14 @@ const MyApp = () => {
 
 ```
 {
-  loading: boolean, indicates if the opencv library is loading (useful to show a spinner)
+  loaded: boolean, indicates if the opencv library is loaded (useful to show a spinner)
   cv: undefined or the OpenCV global instance (can also be found in window.cv)
 }
 ```
 
 ```js
 function MyComponent() {
-  const { loading, cv } = useOpenCv()
+  const { loaded, cv } = useOpenCv()
 
   useEffect(() => {
     if (cv) {
