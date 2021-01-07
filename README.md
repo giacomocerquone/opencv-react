@@ -13,13 +13,13 @@ You have also access to a `loaded` state which is provided by the `OpenCvProvide
 ## Install
 
 ```bash
-npm i react-doc-scan
+npm i opencv-react
 ```
 
 or
 
 ```bash
-yarn add react-doc-scan
+yarn add opencv-react
 ```
 
 ## API
