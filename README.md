@@ -95,6 +95,7 @@ _*Check also the example folder*_
 
 - tests
 - prop types
+- index.d.ts
 
 ## Projects that uses this lib
 
