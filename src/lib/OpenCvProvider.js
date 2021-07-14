@@ -12,7 +12,7 @@ const moduleConfig = {
   usingWasm: true
 }
 
-export const OpenCvProvider = ({ openCvPath, openCvConfig, children, onLoad }) => {
+export const OpenCvProvider = ({ openCvPath, openCvConfig = {}, children, onLoad }) => {
   const [loaded, setLoaded] = React.useState(false)
 
   const handleOnLoad = React.useCallback(() => {
