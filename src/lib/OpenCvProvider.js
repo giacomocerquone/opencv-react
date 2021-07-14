@@ -12,7 +12,7 @@ const moduleConfig = {
   usingWasm: true
 }
 
-export const OpenCvProvider = ({ openCvPath, children, onLoad }) => {
+export const OpenCvProvider = ({ openCvPath, openCvConfig, children, onLoad }) => {
   const [loaded, setLoaded] = React.useState(false)
 
   const handleOnLoad = React.useCallback(() => {
@@ -31,6 +31,7 @@ export const OpenCvProvider = ({ openCvPath, children, onLoad }) => {
     // https://docs.opencv.org/3.4/dc/de6/tutorial_js_nodejs.html
     // https://medium.com/code-divoire/integrating-opencv-js-with-an-angular-application-20ae11c7e217
     // https://stackoverflow.com/questions/56671436/cv-mat-is-not-a-constructor-opencv
+    moduleConfig = { ...moduleConfig, ...openCvConfig }
     moduleConfig.onRuntimeInitialized = handleOnLoad
     window.Module = moduleConfig
 
