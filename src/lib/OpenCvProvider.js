@@ -15,7 +15,10 @@ const moduleConfig = {
 export const OpenCvProvider = ({ openCvPath, openCvConfig = {}, children, onLoad }) => {
   const [loaded, setLoaded] = React.useState(false)
 
-  const handleOnLoad = React.useCallback(() => {
+  const handleOnLoad = React.useCallback(async () => {
+    if (cv instanceof Promise) {
+      window.cv = await window.cv
+    }
     if (onLoad) {
       onLoad(window.cv)
     }
