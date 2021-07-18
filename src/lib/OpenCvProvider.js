@@ -34,9 +34,8 @@ export const OpenCvProvider = ({ openCvPath, openCvConfig = {}, children, onLoad
     // https://docs.opencv.org/3.4/dc/de6/tutorial_js_nodejs.html
     // https://medium.com/code-divoire/integrating-opencv-js-with-an-angular-application-20ae11c7e217
     // https://stackoverflow.com/questions/56671436/cv-mat-is-not-a-constructor-opencv
-    moduleConfig = { ...moduleConfig, ...openCvConfig }
     moduleConfig.onRuntimeInitialized = handleOnLoad
-    window.Module = moduleConfig
+    window.Module = { ...moduleConfig, ...openCvConfig }
 
     const generateOpenCvScriptTag = () => {
       const js = document.createElement('script')
