@@ -37,10 +37,10 @@ export const OpenCvProvider = ({ openCvPath, openCvConfig = {}, children, onLoad
     moduleConfig.onRuntimeInitialized = handleOnLoad
     window.Module = { ...moduleConfig, ...openCvConfig }
 
-    const generateOpenCvScriptTag = () => {
+    const generateOpenCvScriptTag = async () => {
       const js = document.createElement('script')
       js.id = scriptId
-      js.src = openCvPath || 'https://docs.opencv.org/3.4.13/opencv.js'
+      js.src = (typeof openCvPath === 'function') ? await openCvPath() : openCvPath || 'https://docs.opencv.org/3.4.13/opencv.js'
 
       js.nonce = true
       js.defer = true
@@ -49,7 +49,7 @@ export const OpenCvProvider = ({ openCvPath, openCvConfig = {}, children, onLoad
       return js
     }
 
-    document.body.appendChild(generateOpenCvScriptTag())
+    generateOpenCvScriptTag().then(el => document.body.appendChild(el))
   }, [openCvPath, handleOnLoad])
 
   const memoizedProviderValue = React.useMemo(
