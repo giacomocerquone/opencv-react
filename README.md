@@ -78,7 +78,7 @@ function MyComponent() {
 
 const App = () => {
   const onLoaded = (cv) => {
-    console.log('opencv loaded, cv')
+    console.log('opencv loaded', cv)
   }
 
   return (
