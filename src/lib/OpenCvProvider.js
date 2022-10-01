@@ -7,7 +7,7 @@ const { Consumer: OpenCvConsumer, Provider } = OpenCvContext
 export { OpenCvConsumer, OpenCvContext }
 
 export const OpenCvProvider = ({ openCvVersion = '4.5.5', openCvPath = '', children }) => {
-  const [cvInstance, setCvInstance] = React.useState();
+  const [cvInstance, setCvInstance] = React.useState({ loaded: false, cv: undefined });
 
   React.useEffect(() => {
     const scriptId = 'opencv-react'
@@ -20,7 +20,7 @@ export const OpenCvProvider = ({ openCvVersion = '4.5.5', openCvPath = '', child
       usingWasm: true,
       onRuntimeInitialized: () => {
         console.log('opencv loaded', window.cv)
-        setCvInstance(window.cv);
+        setCvInstance({ loaded: true, cv: window.cv });
       }
     }
 
