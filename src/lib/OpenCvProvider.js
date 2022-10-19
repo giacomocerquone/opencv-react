@@ -29,13 +29,19 @@ export const OpenCvProvider = ({ openCvVersion = '4.5.5', openCvPath = '', child
     }
     window.Module = moduleConfig
 
-    const scriptElement = document.createElement('script')
-    scriptElement.id = scriptId
-    scriptElement.nonce = true
-    scriptElement.defer = true
-    scriptElement.async = true
-    scriptElement.src = ((openCvPath !== '') ? openCvPath : `https://docs.opencv.org/${openCvVersion}/opencv.js`);
-    document.body.appendChild(scriptElement)
+    const generateOpenCvScriptTag = () => {
+      const js = document.createElement('script')
+      js.id = scriptId
+      js.src = openCvPath || `https://docs.opencv.org/${openCvVersion}/opencv.js`
+
+      js.nonce = true
+      js.defer = true
+      js.async = true
+
+      return js
+    }
+
+    document.body.appendChild(generateOpenCvScriptTag())
   }, [openCvPath, openCvVersion])
 
   return (
