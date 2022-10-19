@@ -12,7 +12,7 @@ const moduleConfig = {
   usingWasm: true
 }
 
-export const OpenCvProvider = ({ openCvVersion = '4.5.5', openCvPath = '', children }) => {
+export const OpenCvProvider = ({ openCvVersion = '3.4.16', openCvPath = '', children }) => {
   const [cvInstance, setCvInstance] = React.useState({ loaded: false, cv: undefined });
 
   React.useEffect(() => {
