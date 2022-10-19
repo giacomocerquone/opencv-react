@@ -7,7 +7,6 @@ const { Consumer: OpenCvConsumer, Provider } = OpenCvContext
 export { OpenCvConsumer, OpenCvContext }
 
 const scriptId = 'opencv-react'
-
 const moduleConfig = {
   wasmBinaryFile: 'opencv_js.wasm',
   usingWasm: true
