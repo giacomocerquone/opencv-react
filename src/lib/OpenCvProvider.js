@@ -12,32 +12,26 @@ const moduleConfig = {
   usingWasm: true
 }
 
-export const OpenCvProvider = ({ openCvPath, children, onLoad }) => {
-  const [loaded, setLoaded] = React.useState(false)
-
-  const handleOnLoad = React.useCallback(() => {
-    if (onLoad) {
-      onLoad(window.cv)
-    }
-    setLoaded(true)
-  }, [])
+export const OpenCvProvider = ({ openCvVersion = '3.4.16', openCvPath = '', children }) => {
+  const [cvInstance, setCvInstance] = React.useState({ loaded: false, cv: undefined });
 
   React.useEffect(() => {
     if (document.getElementById(scriptId) || window.cv) {
-      setLoaded(true)
       return
     }
 
     // https://docs.opencv.org/3.4/dc/de6/tutorial_js_nodejs.html
     // https://medium.com/code-divoire/integrating-opencv-js-with-an-angular-application-20ae11c7e217
     // https://stackoverflow.com/questions/56671436/cv-mat-is-not-a-constructor-opencv
-    moduleConfig.onRuntimeInitialized = handleOnLoad
+    moduleConfig.onRuntimeInitialized = () => {
+      setCvInstance({ loaded: true, cv: window.cv });
+    }
     window.Module = moduleConfig
 
     const generateOpenCvScriptTag = () => {
       const js = document.createElement('script')
       js.id = scriptId
-      js.src = openCvPath || 'https://docs.opencv.org/3.4.13/opencv.js'
+      js.src = openCvPath || `https://docs.opencv.org/${openCvVersion}/opencv.js`
 
       js.nonce = true
       js.defer = true
@@ -47,12 +41,11 @@ export const OpenCvProvider = ({ openCvPath, children, onLoad }) => {
     }
 
     document.body.appendChild(generateOpenCvScriptTag())
-  }, [openCvPath, handleOnLoad])
+  }, [openCvPath, openCvVersion])
 
-  const memoizedProviderValue = React.useMemo(
-    () => ({ loaded, cv: window.cv }),
-    [loaded]
+  return (
+    <Provider value={cvInstance}>
+      {children}
+    </Provider>
   )
-
-  return <Provider value={memoizedProviderValue}>{children}</Provider>
 }

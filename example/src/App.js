@@ -5,16 +5,12 @@ import { OpenCvProvider, useOpenCv } from 'opencv-react'
 function MyComponent() {
   const data = useOpenCv()
   console.log(data)
-  return <p>OpenCv React test</p>
+  return <p>OpenCv React test: {data.cv ? 'loaded.' : 'loading...'}</p>
 }
 
 const App = () => {
-  const onLoaded = (cv) => {
-    console.log('opencv loaded, cv')
-  }
-
   return (
-    <OpenCvProvider onLoad={onLoaded} openCvPath='/opencv/opencv.js'>
+    <OpenCvProvider openCvPath='/opencv/opencv.js'>
       <MyComponent />
     </OpenCvProvider>
   )
