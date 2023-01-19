@@ -10,7 +10,13 @@ function MyComponent() {
 
 const App = () => {
   return (
-    <OpenCvProvider openCvPath='/opencv/opencv.js'>
+    <OpenCvProvider
+      openCvPath={
+        process.env.NODE_ENV === 'development'
+          ? '/opencv/opencv.js'
+          : '/static/opencv/opencv.js'
+      }
+    >
       <MyComponent />
     </OpenCvProvider>
   )
