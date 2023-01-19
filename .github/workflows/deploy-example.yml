@@ -2,7 +2,7 @@ name: OpenCV React example app deployment
 
 on:
   push:
-    branches: [main]
+    branches: [master]
 
 jobs:
   deploy:
