@@ -1,6 +1,6 @@
 {
   "name": "opencv-react",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "OpenCV react wrapper. Hooks first API.",
   "author": "giacomocerquone",
   "license": "MIT",
@@ -28,7 +28,6 @@
   },
   "devDependencies": {
     "microbundle-crl": "^0.13.10",
-    "@babel/eslint-parser": "^7.19.1",
     "cross-env": "^7.0.2",
     "eslint": "^8.24.0",
     "eslint-config-prettier": "^6.7.0",
