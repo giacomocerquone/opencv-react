@@ -1,0 +1,23 @@
+name: OpenCV React example app deployment
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - run: yarn --frozen-lockfile
+      - run: cd example && yarn build
+      - name: Deploy
+        uses: crazy-max/ghaction-github-pages@v1
+        with:
+          target_branch: gh-pages
+          build_dir: example/build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
