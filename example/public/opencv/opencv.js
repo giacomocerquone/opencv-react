@@ -11010,11 +11010,11 @@
                       canvas = document.createElement("canvas");
                       canvas.width = img.width;
                       canvas.height = img.height;
-                      ctx = canvas.getContext("2d");
+                      ctx = canvas.getContext("2d", { willReadFrequently: true });
                       ctx.drawImage(img, 0, 0, img.width, img.height)
                   } else if (img instanceof HTMLCanvasElement) {
                       canvas = img;
-                      ctx = canvas.getContext("2d")
+                      ctx = canvas.getContext("2d", { willReadFrequently: true });
                   } else {
                       throw new Error("Please input the valid canvas or img id.");
                       return
@@ -11077,7 +11077,7 @@
                   var canvas = document.createElement("canvas");
                   canvas.width = video.width;
                   canvas.height = video.height;
-                  var ctx = canvas.getContext("2d");
+                  var ctx = canvas.getContext("2d", { willReadFrequently: true });
                   this.video = video;
                   this.read = (function(frame) {
                       if (!(frame instanceof cv.Mat)) {
